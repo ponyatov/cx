@@ -1,6 +1,7 @@
 #ifndef _H_CX
 #define _H_CX
 
+#include <cstdlib>
 #include <iostream>
 #include <sstream>
 #include <map>
