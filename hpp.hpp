@@ -52,7 +52,7 @@ struct Str: Frame { Str(string); };
 
 /// @}
 
-/// @defgroup prim Primitives
+/// @defgroup cont Containters
 /// @ingroup frame
 /// @{
 										/// stack
