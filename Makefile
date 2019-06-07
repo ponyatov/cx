@@ -1,15 +1,15 @@
-log.log: cx src.src
-	./$^
+log.log: src.src cx$(EXE)
+	./cx$(EXE) < $< > $@ && tail $(TAIL) $@
 
-C = cpp.cpp ypp.tab.cpp yy.lex.c
+C = cpp.cpp ypp.tab.cpp lex.yy.c
 H = hpp.hpp ypp.tab.hpp
 
-./cx: $(C) $(H) Makefile
+cx$(EXE): $(C) $(H) Makefile
 	$(CXX) $(CXXFLAGS) -o $@ $(C)
 
 ypp.tab.cpp ypp.tab.hpp: ypp.ypp
 	bison $<
 
-yy.lex.c: lex.lex
+lex.yy.c: lpp.lpp
 	flex $<
 

@@ -1,0 +1,12 @@
+%{
+#include "hpp.hpp"
+%}
+
+%defines %union { Frame* f; }
+
+%token <f> SYM
+
+%%
+REPL :
+REPL : REPL SYM		{ cout << $2 << endl; }
+%%

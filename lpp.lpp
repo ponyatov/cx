@@ -1,0 +1,8 @@
+%{
+#include "hpp.hpp"
+%}
+
+%option yylineno noyywrap
+
+%%
+

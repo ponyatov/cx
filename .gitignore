@@ -3,4 +3,7 @@
 *.o
 *.log
 cx
+cx.exe
+ypp.tab.?pp
+lex.yy.c
 
