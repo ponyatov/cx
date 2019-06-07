@@ -1,4 +1,7 @@
-# light interpreter in C(++)
 \ line comment
 
-
+MODULE	= 'cx'
+TITLE	= 'light frame interpreter in C(++)'
+AUTHOR	= 'Dmitry Ponyatov <<dponyatov@gmail.com>>'
+LICENSE	= 'BY CC-NC-ND'
+GITHUB	= 'https://github.com/ponyatov/cx'

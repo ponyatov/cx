@@ -2,11 +2,11 @@
 #include "hpp.hpp"
 %}
 
-%defines %union { Frame* f; }
+%defines %union { Frame* o; }
 
-%token <f> SYM
+%token <o> SYM
 
 %%
 REPL :
-REPL : REPL SYM		{ cout << $2 << endl; }
+REPL : REPL SYM		{ cout << $2->dump() << endl; }
 %%

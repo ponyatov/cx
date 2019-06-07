@@ -4,5 +4,16 @@
 
 %option yylineno noyywrap
 
-%%
+%x str
 
+%%
+[\\#][^\n]*		{}						// line comment
+
+\'				{BEGIN(str);}
+<str>\'			{BEGIN(INITIAL);}
+<str>.			{lexstring += yytext;}
+
+[^ \t\r\n']+		{yylval.o = new Frame(yytext); return SYM;}
+
+[ \t\r\n]+		{}						// drop spaces
+.				{yyerror("lexer");}		// error on undetected char
