@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ref',['ref',['../structFrame.html#a1eea1a30d969fbbaf44af8af2e6f46ad',1,'Frame']]]
+  ['pool',['pool',['../group__gc.html#ga84b7d2b9bb8457d12dca08a3f410cb62',1,'Frame']]]
 ];

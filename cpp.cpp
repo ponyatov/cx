@@ -5,7 +5,7 @@ void yyerror(string msg) { cout<<YYERR; cerr<<YYERR; exit(-1); }
 
 int main() { return yyparse(); }
 
-Frame::Frame(string T, string V) { tag = T; val = V; ref=0; }
+Frame::Frame(string T, string V) { tag = T; val = V; ref=0; pool.push_back(this); }
 Frame::Frame(string V):Frame("frame",V) {}
 
 string Frame::dump(int depth, string prefix) {
@@ -28,10 +28,23 @@ string Frame::pad(int depth) {
 	return tabs;
 }
 
-void Frame::push(Frame *o) { nest.push_back(o); }
+vector<Frame*> Frame::pool;
+
+string Frame::pool_dump(void) {
+	cout << "\npool:\n";
+	for (auto it=pool.begin(),e=pool.end(); it!=e; it++)
+		cout << '\t' << (*it)->head() << endl;
+	cout << endl;
+}
+
+void Frame::push(Frame *o) { nest.push_back(o); o->ref++; }
 
 Sym::Sym(string V):Frame("sym",V) {}
 
 Str::Str(string V):Frame("str",V) {}
 
 Op::Op(string V):Frame("op",V) {}
+
+VM::VM(string V):Frame("vm",V) {}
+
+//VM* vm = new VM("cx");

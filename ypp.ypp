@@ -11,7 +11,7 @@
 
 %%
 REPL :
-REPL : REPL ex		{ cout << $2->dump() << endl; }
+REPL : REPL ex		{ cout << $2->dump() << endl; cout << $2->pool_dump(); }
 ex	 : SYM			
 ex   : SYM EQ SYM	{ $$ = $2; $2->push($1); $2->push($3); }
 %%

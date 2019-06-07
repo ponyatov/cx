@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['minsky_20frame_20virtual_20machine',['Minsky Frame virtual machine',['../md_doc_VM.html',1,'']]],
-  ['metaprogramming',['Metaprogramming',['../group__meta.html',1,'']]]
+  ['head',['head',['../structFrame.html#aa6f5d9231fc675d08472ebda7b3db4a8',1,'Frame']]]
 ];

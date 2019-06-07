@@ -9,8 +9,9 @@
 using namespace std;
 
 /// @defgroup frame extended Marvin Minsky frame model
+/// @{
 
-/// @ingroup frame
+
 										/// base frame class (generic object)
 struct Frame {
 										/// type/class tag
@@ -21,8 +22,17 @@ struct Frame {
 	map<string,Frame*> slot;
 										/// nest[]ed elements
 	vector<Frame*> nest;
+
+	/// @defgroup gc Garbage Collector
+	/// @ingroup vm
+	/// @{
 										/// ref.counter for GC
 	long ref;
+										/// global object pool
+	static vector<Frame*> pool;
+										/// print object pool
+	string pool_dump(void);
+	/// @}
 
 										/// frame constructor with given type
 	Frame(string T, string V);
@@ -42,7 +52,7 @@ struct Frame {
 
 };
 
-/// @defgroup prim Primitives
+/// @defgroup prim Primitive
 /// @ingroup frame
 /// @{
 										/// symbol
@@ -52,7 +62,7 @@ struct Str: Frame { Str(string); };
 
 /// @}
 
-/// @defgroup cont Containters
+/// @defgroup cont Containter
 /// @ingroup frame
 /// @{
 										/// stack
@@ -76,8 +86,10 @@ struct Op: Frame { Op(string); };
 struct Cmd: Frame { Cmd(string); };
 										/// virtual machine
 struct VM: Frame { VM(string); };
-
+										/// global system VM
 extern VM* vm;
+
+/// @}
 
 /// @}
 

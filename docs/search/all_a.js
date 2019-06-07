@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['slot',['slot',['../structFrame.html#a5ed1509e700d2e3d5225de53017c0fb0',1,'Frame']]],
-  ['stack',['Stack',['../structStack.html',1,'']]],
-  ['str',['Str',['../structStr.html',1,'']]],
-  ['sym',['Sym',['../structSym.html',1,'']]]
+  ['ref',['ref',['../group__gc.html#ga1eea1a30d969fbbaf44af8af2e6f46ad',1,'Frame']]]
 ];
