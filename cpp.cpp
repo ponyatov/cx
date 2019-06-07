@@ -15,7 +15,12 @@ string Frame::dump(int depth, string prefix) {
 	return tree;
 }
 
-string Frame::head(string prefix) { return prefix+"<"+tag+":"+val+">"; }
+string Frame::head(string prefix) {
+	ostringstream os;
+	os << prefix << "<" << tag << ":" << val << ">";
+	os << " #" << ref;
+	os << " @" << this;
+	return os.str(); }
 
 string Frame::pad(int depth) {
 	string tabs = "\n";

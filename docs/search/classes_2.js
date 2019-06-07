@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['str',['Str',['../structStr.html',1,'']]],
-  ['sym',['Sym',['../structSym.html',1,'']]]
+  ['frame',['Frame',['../structFrame.html',1,'']]]
 ];

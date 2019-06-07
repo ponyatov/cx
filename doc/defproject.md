@@ -1,0 +1,13 @@
+# Define project {#defproject}
+
+```
+\ line comment
+# example: define project
+
+MODULE	= 'cx'
+TITLE	= 'light frame interpreter in C(++)'
+AUTHOR	= 'Dmitry Ponyatov <<dponyatov@gmail.com>>'
+LICENSE	= 'BY CC-NC-ND'
+GITHUB	= 'https://github.com/ponyatov/cx'
+MANUAL	= 'https://ponyatov.github.io/cx'
+```

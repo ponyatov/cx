@@ -2,7 +2,7 @@
 #define _H_CX
 
 #include <iostream>
-#include <ostream>
+#include <sstream>
 #include <map>
 #include <vector>
 
@@ -11,22 +11,22 @@ using namespace std;
 /// @defgroup frame extended Marvin Minsky frame model
 
 /// @ingroup frame
-								/// base frame class (generic object)
+										/// base frame class (generic object)
 struct Frame {
-								/// type/class tag
+										/// type/class tag
 	string tag;
-								/// value
+										/// value
 	string val;
-								/// slot{}s = attributes
+										/// slot{}s = attributes
 	map<string,Frame*> slot;
-								/// nest[]ed elements
+										/// nest[]ed elements
 	vector<Frame*> nest;
-								/// ref.counter for GC
+										/// ref.counter for GC
 	long ref;
 
-								/// frame constructor with given type
+										/// frame constructor with given type
 	Frame(string T, string V);
-								/// frome constructor from value only
+										/// frome constructor from value only
 	Frame(string V);
 
 	/// dump in full tree form
@@ -37,7 +37,7 @@ struct Frame {
 
 	/// left pad with tabs
 	string pad(int depth);
-									/// push into @ref nest as a stack
+										/// push into @ref nest as a stack
 	void push(Frame *o);
 
 };
@@ -45,36 +45,57 @@ struct Frame {
 /// @defgroup prim Primitives
 /// @ingroup frame
 /// @{
-									/// symbol
+										/// symbol
 struct Sym: Frame { Sym(string); };
-									/// string
+										/// string
 struct Str: Frame { Str(string); };
 
+/// @}
+
+/// @defgroup prim Primitives
+/// @ingroup frame
+/// @{
+										/// stack
+struct Stack: Frame { Stack(string); };
+
+										/// dict
+struct Dict: Frame { Dict(string); };
 /// @}
 
 /// @defgroup meta Metaprogramming
 /// @ingroup frame
 /// @{
-									/// operator
+										/// operator
 struct Op: Frame { Op(string); };
+
+/// @}
+
+/// @defgroup vm Virtual Machine
+/// @{
+										/// virtual machine command
+struct Cmd: Frame { Cmd(string); };
+										/// virtual machine
+struct VM: Frame { VM(string); };
+
+extern VM* vm;
 
 /// @}
 
 /// @defgroup parser parser interface
 
-									/// @name flex
+										/// @name flex
 
-									/// lexer call gives single token
+										/// lexer call gives single token
 extern int yylex();
-									/// current line number
+										/// current line number
 extern int yylineno;
-									/// current lexeme selected by lexer
+										/// current lexeme selected by lexer
 extern char *yytext;
-									/// @name bison
+										/// @name bison
 
-									/// parser start /bison/
+										/// parser start /bison/
 extern int yyparse();
-									/// parser error callback
+										/// parser error callback
 extern void yyerror(string msg);
 #include "ypp.tab.hpp"
 

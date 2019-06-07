@@ -16,5 +16,5 @@ ypp.tab.cpp ypp.tab.hpp: ypp.ypp
 lex.yy.c: lpp.lpp
 	flex $<
 
-doxy: doxy.gen $(C) $(H)
+doxy: doxy.gen $(C) $(H) doc/*
 	rm -rf docs ; doxygen $< 1>/dev/null
