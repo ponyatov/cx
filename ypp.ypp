@@ -5,8 +5,13 @@
 %defines %union { Frame* o; }
 
 %token <o> SYM
+%token <o> EQ
+
+%type <o> ex
 
 %%
 REPL :
-REPL : REPL SYM		{ cout << $2->dump() << endl; }
+REPL : REPL ex		{ cout << $2->dump() << endl; }
+ex	 : SYM			
+ex   : SYM EQ SYM	{ $$ = $2; $2->push($1); $2->push($3); }
 %%

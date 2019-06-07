@@ -1,5 +1,7 @@
 %{
 #include "hpp.hpp"
+
+string lexstring;
 %}
 
 %option yylineno noyywrap
@@ -9,11 +11,14 @@
 %%
 [\\#][^\n]*		{}						// line comment
 
-\'				{BEGIN(str);}
-<str>\'			{BEGIN(INITIAL);}
+\'				{BEGIN(str); lexstring="";}
+<str>\'			{BEGIN(INITIAL); yylval.o = new Str(lexstring); return SYM;}
 <str>.			{lexstring += yytext;}
 
-[^ \t\r\n']+		{yylval.o = new Frame(yytext); return SYM;}
+\=				{yylval.o = new Op(yytext); return EQ;} 
+
+[a-zA-Z0-9_]+	{yylval.o = new Sym(yytext); return SYM;}
+[^ \t\r\n']+	{yylval.o = new Frame(yytext); return SYM;}
 
 [ \t\r\n]+		{}						// drop spaces
 .				{yyerror("lexer");}		// error on undetected char

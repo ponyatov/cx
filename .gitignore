@@ -8,3 +8,4 @@ ypp.tab.?pp
 lex.yy.c
 
 docs/
+.settings/org.eclipse.cdt.codan.core.prefs
